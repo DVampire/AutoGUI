@@ -219,8 +219,6 @@ def run_info_auto():
     infer = Inference(auto_params=auto_params, device=device)
     masks = infer.infer_auto(image)
 
-    print(masks[0].keys())
-
     plt.figure(figsize=(20, 20))
     plt.imshow(image)
     show_anns(masks)
