@@ -54,7 +54,7 @@ def show_anns(anns):
         img[m] = color_mask
     ax.imshow(img)
 
-class Inference():
+class SAMInference():
     def __init__(self,
                  checkpoint_path = os.path.join(ROOT, "sam", "checkpoints", "sam_vit_h_4b8939.pth"),
                  model_type = "vit_h",
@@ -167,7 +167,7 @@ def run_infer_prompt():
     }
     batch_input.append(item)
 
-    infer = Inference(device=device)
+    infer = SAMInference(device=device)
 
     """
     With `multimask_output=True` (the default setting), SAM outputs 3 masks,
@@ -216,7 +216,7 @@ def run_info_auto():
         min_mask_region_area=100,  # Requires open-cv to run post-processing
     )
 
-    infer = Inference(auto_params=auto_params, device=device)
+    infer = SAMInference(auto_params=auto_params, device=device)
     masks = infer.infer_auto(image)
 
     plt.figure(figsize=(20, 20))
